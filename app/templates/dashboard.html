@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">Upload a CSV to Segment</h2>
+
+<form method="post" action="{{ url_for('main.upload') }}" enctype="multipart/form-data" class="row g-3 mb-5">
+  <div class="col-auto">
+    <input type="file" name="file" accept=".csv" class="form-control" required>
+  </div>
+  <div class="col-auto">
+    <button class="btn btn-primary">Run K‑Means</button>
+  </div>
+</form>
+
+<h3 class="mb-2">Upload History</h3>
+{% if uploads %}
+  <div class="table-responsive">
+    <table class="table align-middle table-hover small">
+      <thead class="table-light">
+        <tr>
+          <th>Date</th>
+          <th>Original CSV</th>
+          <th>Clustered CSV</th>
+          <th>Plot</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for u in uploads %}
+          <tr>
+            <td>{{ u.timestamp.strftime('%Y‑%m‑%d %H:%M') }}</td>
+            <td><a href="{{ url_for('main.download_file', fname=u.saved_name) }}">{{ u.original_name }}</a></td>
+            <td><a href="{{ url_for('main.download_file', fname=u.clustered_name) }}">Download</a></td>
+            <td>
+              {% if u.plot_name %}
+                <a href="{{ url_for('static', filename='uploads/' ~ u.plot_name) }}" target="_blank">View</a>
+              {% else %}—{% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <p class="text-muted">No uploads yet.</p>
+{% endif %}
+{% endblock %}

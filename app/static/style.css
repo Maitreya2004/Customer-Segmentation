@@ -1,0 +1,41 @@
+/* Orange shade theme */
+body {
+  background-color: #fffdf9;
+  color: #333;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.navbar {
+  background-color: #fc8019 !important;
+}
+
+.navbar .navbar-brand {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.btn-primary {
+  background-color: #fc8019;
+  border-color: #fc8019;
+}
+.btn-primary:hover {
+  background-color: #e86a03;
+  border-color: #e86a03;
+}
+
+.alert {
+  font-size: 0.9rem;
+}
+
+/* Smaller table text */
+.table td, .table th {
+  font-size: 0.85rem;
+}
+
+/* Rounded plot image */
+img.rounded {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 4px;
+  background-color: #fff;
+}

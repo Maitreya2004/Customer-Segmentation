@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Result{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">Top 10 Rows with Cluster Labels</h2>
+{{ table | safe }}
+
+{% if plot %}
+  <h2 class="mt-4">2‑D View</h2>
+  <img src="{{ plot }}" class="img-fluid rounded" alt="Segmentation plot">
+{% endif %}
+
+<p class="mt-3">
+  <a href="{{ download }}" class="btn btn-primary" download>Download Clustered CSV</a>
+  <a href="{{ url_for('main.dashboard') }}" class="btn btn-link">Back</a>
+</p>
+{% endblock %}
