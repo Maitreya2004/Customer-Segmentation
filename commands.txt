@@ -1,0 +1,7 @@
+if venv does not exist
+py -3.11 -m venv venv     # create venv
+
+venv\Scripts\Activate.ps1 # activate (or .\venv\Scripts\activate.bat in CMD)
+pip install -r requirements.txt
+$env:FLASK_APP="app"      # or set FLASK_APP=app  (CMD)
+flask run
